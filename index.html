@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VideoFind AI - Find Videos Similar to Your Content</title>
+  <meta name="description" content="AI-Powered Video Discovery & Research Platform with Built-in Gemini Assistant." />
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/gemini.css" />
+</head>
+<body>
+
+  <div class="app-layout">
+
+    <!-- ==============================================
+         LEFT SIDEBAR
+         ============================================== -->
+    <aside class="app-sidebar">
+      <div class="sidebar-top">
+        
+        <!-- Logo -->
+        <a href="#" class="sidebar-logo" id="logo-home-link">
+          <svg class="logo-icon-svg" viewBox="0 0 36 36" fill="none">
+            <rect width="36" height="36" rx="10" fill="#2563eb"/>
+            <polygon points="14,10 26,18 14,26" fill="#ffffff"/>
+          </svg>
+          <span class="logo-text">VideoFind AI</span>
+        </a>
+
+        <!-- Navigation Menu -->
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item" data-view="dashboard" id="nav-item-dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Dashboard</span>
+          </li>
+          <li class="sidebar-nav-item active" data-view="search" id="nav-item-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <span>New Search</span>
+          </li>
+          <li class="sidebar-nav-item" data-view="saved" id="nav-item-saved">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span>Saved Videos</span>
+          </li>
+          <li class="sidebar-nav-item" data-view="history" id="nav-item-history">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span>Search History</span>
+          </li>
+          <li class="sidebar-nav-item" data-view="settings" id="nav-item-settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+            <span>Settings</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- User Profile Pill -->
+      <div class="sidebar-profile" id="user-profile-toggle">
+        <div class="profile-avatar-info">
+          <div class="profile-avatar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="profile-name">Rafiq Hasan</div>
+            <div class="profile-email">rafiq@example.com</div>
+          </div>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+    </aside>
+
+    <!-- ==============================================
+         MAIN CONTENT AREA & GEMINI DOCKED PANEL
+         ============================================== -->
+    <div class="app-content-wrapper">
+
+      <!-- Center Main Canvas -->
+      <main class="main-center-canvas">
+        
+        <!-- ==============================
+             PAGE: NEW SEARCH (DEFAULT)
+             ============================== -->
+        <section id="view-search" class="center-card-container">
+          
+          <!-- 3D Glass Floating Badge on Top Right -->
+          <div class="canvas-3d-badge">
+            <svg viewBox="0 0 80 80" fill="none">
+              <circle cx="40" cy="40" r="32" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+              <path d="M40 16C53.25 16 64 26.75 64 40C64 53.25 53.25 64 40 64" stroke="#93c5fd" stroke-width="2" stroke-linecap="round"/>
+              <rect x="25" y="25" width="30" height="30" rx="8" fill="url(#playGrad)" filter="drop-shadow(0 4px 10px rgba(37,99,235,0.25))"/>
+              <polygon points="36,33 48,40 36,47" fill="#ffffff"/>
+              <defs>
+                <linearGradient id="playGrad" x1="25" y1="25" x2="55" y2="55" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#3b82f6"/>
+                  <stop offset="1" stop-color="#1d4ed8"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <!-- Section Header -->
+          <div class="canvas-header">
+            <h1 class="canvas-title">Find Videos Similar to Your Content</h1>
+            <p class="canvas-subtitle">Upload a reference video, add keywords, and discover relevant videos across supported social platforms.</p>
+          </div>
+
+          <!-- 1. Upload Reference Video -->
+          <div class="form-step-group">
+            <div class="form-step-title">1. Upload Reference Video</div>
+            <div class="video-upload-grid">
+              
+              <!-- Left Dropzone Card -->
+              <div id="upload-dropzone-box" class="upload-dropzone-card">
+                <svg class="upload-cloud-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 16l-4-4-4 4"/>
+                  <path d="M12 12v9"/>
+                  <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+                </svg>
+                <div class="upload-card-title">Click to upload or drag and drop</div>
+                <div class="upload-card-desc">MP4, MOV, WebM (Max 100MB)</div>
+                <input type="file" id="reference-video-file" accept="video/*" style="display: none;" />
+              </div>
+
+              <!-- Right Video Preview Card -->
+              <div id="reference-preview-card" class="video-preview-card">
+                <div class="preview-card-media">
+                  <img id="preview-thumb-img" class="preview-card-thumb" src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=80" alt="lipstick demo" />
+                  <div class="preview-card-play-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="preview-card-info">
+                  <div id="preview-filename-text" class="preview-filename">lipstick_demo.mp4</div>
+                  <div id="preview-filesize-text" class="preview-filesize">24.6 MB</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 2. Add Related Keywords -->
+          <div class="form-step-group">
+            <div class="form-step-title">2. Add Related Keywords</div>
+            <div id="keywords-container" class="keywords-input-box">
+              <span class="keyword-tag-pill">beauty <span class="remove-tag" data-tag="beauty">&times;</span></span>
+              <span class="keyword-tag-pill">lipstick <span class="remove-tag" data-tag="lipstick">&times;</span></span>
+              <span class="keyword-tag-pill">makeup <span class="remove-tag" data-tag="makeup">&times;</span></span>
+              <span class="keyword-tag-pill">cosmetics <span class="remove-tag" data-tag="cosmetics">&times;</span></span>
+              <span class="keyword-tag-pill">luxury <span class="remove-tag" data-tag="luxury">&times;</span></span>
+              <input type="text" id="keyword-text-input" class="keywords-text-input" placeholder="Add more keywords..." />
+              <button id="btn-add-keyword" class="keywords-add-btn" type="button" title="Add Keyword">+</button>
+            </div>
+          </div>
+
+          <!-- 3. Optional Description -->
+          <div class="form-step-group">
+            <div class="form-step-title">3. Optional Description</div>
+            <div class="description-textarea-wrapper">
+              <textarea id="search-description" class="description-textarea" maxlength="500" placeholder="Describe what you are looking for..."></textarea>
+              <span id="description-char-counter" class="char-counter">0/500</span>
+            </div>
+          </div>
+
+          <!-- 4. Select Platforms -->
+          <div class="form-step-group">
+            <div class="form-step-title">4. Select Platforms</div>
+            <div class="platforms-row">
+              
+              <!-- YouTube -->
+              <div class="platform-select-card selected" data-platform="YouTube">
+                <div class="platform-info-inner">
+                  <div class="platform-icon-wrap" style="color: #ff0000;">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </div>
+                  <span class="platform-name-text">YouTube</span>
+                </div>
+                <div class="platform-checkbox">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+              </div>
+
+              <!-- Facebook -->
+              <div class="platform-select-card selected" data-platform="Facebook">
+                <div class="platform-info-inner">
+                  <div class="platform-icon-wrap" style="color: #1877f2;">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                  </div>
+                  <span class="platform-name-text">Facebook</span>
+                </div>
+                <div class="platform-checkbox">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+              </div>
+
+              <!-- Instagram -->
+              <div class="platform-select-card" data-platform="Instagram">
+                <div class="platform-info-inner">
+                  <div class="platform-icon-wrap" style="color: #e1306c;">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </div>
+                  <span class="platform-name-text">Instagram</span>
+                </div>
+                <div class="platform-checkbox">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+              </div>
+
+              <!-- TikTok -->
+              <div class="platform-select-card" data-platform="TikTok">
+                <div class="platform-info-inner">
+                  <div class="platform-icon-wrap" style="color: #000000;">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .57.04.84.12V9.37a6.34 6.34 0 0 0-6.33 6.33 6.33 6.33 0 0 0 6.33 6.33 6.33 6.33 0 0 0 6.33-6.33V9.89a8.16 8.16 0 0 0 4.89 1.62V8.06a4.83 4.83 0 0 1-1.95-1.37z"/>
+                    </svg>
+                  </div>
+                  <span class="platform-name-text">TikTok</span>
+                </div>
+                <div class="platform-checkbox">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Advanced Search Accordion -->
+          <div id="advanced-search-toggle" class="advanced-search-toggle">
+            <span>Advanced Search</span>
+            <svg id="advanced-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+
+          <div id="advanced-search-content" class="advanced-search-content">
+            <div>
+              <label style="font-size: 12px; font-weight: 600; color: #475569; display: block; margin-bottom: 6px;">Sort By</label>
+              <select id="sort-select-input" style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-medium); font-size: 13px;">
+                <option value="relevance">Highest AI Match Score (Default)</option>
+                <option value="views">Most Views</option>
+                <option value="newest">Recently Published</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size: 12px; font-weight: 600; color: #475569; display: block; margin-bottom: 6px;">AI Match Threshold</label>
+              <select style="width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-medium); font-size: 13px;">
+                <option value="80">80% Match & Above (Recommended)</option>
+                <option value="70">70% Match & Above</option>
+                <option value="90">90% Match & Above (Strict)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Main CTA Button -->
+          <button id="btn-find-similar" class="btn-find-videos-main" type="button">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            Find Similar Videos
+          </button>
+
+        </section>
+
+
+        <!-- ==============================
+             PAGE: SEARCH RESULTS
+             ============================== -->
+        <section id="view-results" class="results-container">
+          <div class="results-top-bar">
+            <div>
+              <h2 id="results-headline" style="font-size: 1.5rem; font-weight: 800; color: var(--text-main);">Search Results</h2>
+              <p id="results-subtext" style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Top-matched videos based on your reference and keywords.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button id="btn-results-ask-gemini" class="btn btn-primary btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+                </svg>
+                Ask Gemini About Results
+              </button>
+              <button id="btn-back-to-search" class="btn btn-secondary btn-sm">
+                Modify Search
+              </button>
+            </div>
+          </div>
+
+          <div id="results-cards-grid" class="results-grid-cards">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+
+        <!-- ==============================
+             PAGE: DASHBOARD
+             ============================== -->
+        <section id="view-dashboard" class="center-card-container" style="display: none;">
+          <h2 style="font-size: 1.5rem; margin-bottom: 8px;">Dashboard Overview</h2>
+          <p style="color: var(--text-muted); margin-bottom: 24px;">Quick overview of reference videos and recent research.</p>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 30px;">
+            <div style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 18px;">
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted);">DISCOVERED VIDEOS</div>
+              <div style="font-size: 26px; font-weight: 800; color: var(--text-main); margin-top: 4px;">1,420+</div>
+            </div>
+            <div style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 18px;">
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted);">AVG MATCH SCORE</div>
+              <div style="font-size: 26px; font-weight: 800; color: var(--primary-blue); margin-top: 4px;">94.2%</div>
+            </div>
+            <div style="background: #f8fafc; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 18px;">
+              <div style="font-size: 12px; font-weight: 600; color: var(--text-muted);">CONNECTED PLATFORMS</div>
+              <div style="font-size: 26px; font-weight: 800; color: #16a34a; margin-top: 4px;">5 Live</div>
+            </div>
+          </div>
+
+          <div style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">Quick Load Reference Preset</div>
+          <div id="dash-presets-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <!-- Populated via JS -->
+          </div>
+        </section>
+
+
+        <!-- ==============================
+             PAGE: SAVED VIDEOS
+             ============================== -->
+        <section id="view-saved" class="center-card-container" style="display: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 1.5rem; font-weight: 800;">Saved Videos</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Videos bookmarked from your discovery sessions.</p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button id="btn-export-saved-csv" class="btn btn-secondary btn-sm">Export CSV</button>
+              <button id="btn-export-saved-json" class="btn btn-secondary btn-sm">Export JSON</button>
+            </div>
+          </div>
+
+          <div id="saved-cards-grid" class="results-grid-cards">
+            <!-- Populated via JS -->
+          </div>
+          <div id="saved-empty-hint" style="text-align: center; padding: 40px; color: var(--text-muted); display: none;">
+            No saved videos yet. Click "Save" on search results cards to bookmark them.
+          </div>
+        </section>
+
+
+        <!-- ==============================
+             PAGE: SEARCH HISTORY
+             ============================== -->
+        <section id="view-history" class="center-card-container" style="display: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+            <div>
+              <h2 style="font-size: 1.5rem; font-weight: 800;">Search History</h2>
+              <p style="color: var(--text-muted); font-size: 13px;">Review your previous video research sessions.</p>
+            </div>
+            <button id="btn-clear-history-all" class="btn btn-secondary btn-sm">Clear History</button>
+          </div>
+          <div id="history-items-feed" style="display: flex; flex-direction: column; gap: 10px;">
+            <!-- Populated via JS -->
+          </div>
+        </section>
+
+
+        <!-- ==============================
+             PAGE: SETTINGS
+             ============================== -->
+        <section id="view-settings" class="center-card-container" style="display: none;">
+          <h2 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px;">Settings</h2>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 24px;">Configure Gemini AI API credentials and discovery models.</p>
+
+          <div style="max-width: 500px;">
+            <div style="margin-bottom: 20px;">
+              <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 6px;">Google Gemini API Key</label>
+              <input type="password" id="input-api-key" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border-medium); font-size: 13.5px;" placeholder="AIzaSy..." />
+              <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">Keys are securely stored on your backend server.</div>
+            </div>
+
+            <div style="margin-bottom: 24px;">
+              <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 6px;">Gemini Model</label>
+              <select id="select-model" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border-medium); font-size: 13.5px;">
+                <option value="gemini-2.0-flash">Gemini 2.0 Flash (Recommended - Fastest & Multimodal)</option>
+                <option value="gemini-1.5-flash">Gemini 1.5 Flash (Lightweight)</option>
+                <option value="gemini-1.5-pro">Gemini 1.5 Pro (Deep Reasoning)</option>
+              </select>
+            </div>
+
+            <button id="btn-save-cfg" class="btn btn-primary">Save Settings</button>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- ==============================================
+           RIGHT: BUILT-IN GEMINI ASSISTANT PANEL
+           ============================================== -->
+      <aside id="gemini-docked-panel" class="gemini-assistant-card">
+        
+        <!-- Header -->
+        <div class="gemini-card-header">
+          <div class="gemini-header-left">
+            <svg class="gemini-star-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+            </svg>
+            <div class="gemini-title-group">
+              <h3>Gemini Assistant</h3>
+              <div class="gemini-status-row">
+                <span class="gemini-status-dot"></span>
+                <span>Ready to help</span>
+              </div>
+            </div>
+          </div>
+          <button id="btn-close-gemini" class="gemini-close-btn" title="Close Assistant">&times;</button>
+        </div>
+
+        <!-- Scope / Context Selector Bar -->
+        <div class="gemini-scope-bar">
+          <button class="scope-pill active" data-scope="current-search">Current Search</button>
+          <button class="scope-pill" data-scope="current-video">Current Video</button>
+          <button class="scope-pill" data-scope="search-results">Results</button>
+          <div class="scope-dropdown-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Chat Conversation Area -->
+        <div id="gemini-chat-scroll" class="gemini-chat-scroll">
+          <div class="gemini-msg-item">
+            <div class="gemini-avatar-sparkle">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+              </svg>
+            </div>
+            <div class="gemini-msg-bubble">
+              Hi! I'm Gemini, your AI assistant. I can help you with this search, suggest better keywords, explain results, and more. What would you like to do?
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions Grid (Exactly matching the screenshot) -->
+        <div class="gemini-quick-actions-section">
+          <div class="quick-actions-title">Quick Actions</div>
+          <div class="quick-actions-grid">
+            <button class="qa-card-btn" data-action="improve-keywords">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+              <span>Improve Keywords</span>
+            </button>
+            <button class="qa-card-btn" data-action="find-ideas">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"/></svg>
+              <span>Find Content Ideas</span>
+            </button>
+            <button class="qa-card-btn" data-action="generate-queries">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <span>Generate More Queries</span>
+            </button>
+            <button class="qa-card-btn" data-action="analyze-reference">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span>Analyze My Reference</span>
+            </button>
+            <button class="qa-card-btn" data-action="explain-results">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <span>Explain Results</span>
+            </button>
+            <button class="qa-card-btn" data-action="suggest-queries">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/></svg>
+              <span>Suggest Better Queries</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Chat Input Footer -->
+        <div class="gemini-input-wrapper">
+          <div class="gemini-input-bar">
+            <input type="text" id="gemini-chat-input" class="gemini-text-field" placeholder="Ask Gemini anything..." />
+            <button id="btn-gemini-send" class="gemini-send-button" type="button" title="Send message">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+              </svg>
+            </button>
+          </div>
+          <div class="gemini-context-subtext">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/>
+            </svg>
+            <span>Using current search context</span>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- ==============================================
+         FLOATING ACTION BUTTON (BOTTOM-RIGHT)
+         ============================================== -->
+    <button id="btn-gemini-fab" class="gemini-fab-btn" title="Ask Gemini" aria-label="Ask Gemini">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+      </svg>
+    </button>
+
+    <!-- ==============================================
+         VIDEO PREVIEW MODAL
+         ============================================== -->
+    <div id="video-preview-modal" class="video-modal-backdrop" aria-hidden="true">
+      <div class="video-modal-box">
+        <div style="padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <span id="modal-video-platform" class="result-badge-pill" style="background: #ff0000; position: static;">YouTube</span>
+            <h3 id="modal-video-title" style="margin-top: 6px; font-size: 15px;">Video Title</h3>
+          </div>
+          <button id="btn-close-modal" class="gemini-close-btn">&times;</button>
+        </div>
+        <div style="padding: 20px;">
+          <video id="modal-player" controls style="width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 12px; margin-bottom: 16px;"></video>
+          <div style="display: flex; align-items: center; justify-content: space-between; background: #eef2ff; border-radius: 10px; padding: 10px 14px; margin-bottom: 12px;">
+            <span id="modal-score" style="font-weight: 700; color: var(--primary-blue); font-size: 14px;">96% AI Match</span>
+            <button id="modal-btn-ask-gemini" class="btn btn-primary btn-sm">Ask Gemini About This Video</button>
+          </div>
+          <div id="modal-why-text" style="font-size: 13px; color: #475569; background: #f8fafc; padding: 12px; border-radius: 10px; line-height: 1.5;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+  </div>
+
+  <!-- Main ES Modules Entrypoint -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
