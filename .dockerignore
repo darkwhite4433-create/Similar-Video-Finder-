@@ -1,0 +1,6 @@
+.git
+.gitignore
+.env
+data/
+*.log
+.dart_tool/

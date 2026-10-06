@@ -1,0 +1,16 @@
+# Environment variables
+.env
+
+# Storage and runtime data
+data/
+*.log
+
+# Dart build and cache
+.dart_tool/
+.packages
+pubspec.lock
+build/
+
+# OS metadata
+Thumbs.db
+.DS_Store
