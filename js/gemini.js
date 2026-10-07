@@ -29,9 +29,13 @@ class GeminiAssistant {
   init() {
     if (!this.panel) return;
 
-    // Toggle panel via FAB
+    // Toggle panel via FAB or top nav button
     if (this.fabBtn) {
       this.fabBtn.addEventListener('click', () => this.togglePanel());
+    }
+    const topGeminiBtn = document.getElementById('top-gemini-toggle');
+    if (topGeminiBtn) {
+      topGeminiBtn.addEventListener('click', () => this.togglePanel());
     }
 
     // Close button

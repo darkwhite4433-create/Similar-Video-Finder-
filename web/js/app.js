@@ -19,7 +19,7 @@ class AppRouter {
       settings: document.getElementById('view-settings'),
     };
 
-    this.navItems = document.querySelectorAll('.sidebar-nav-item');
+    this.navItems = document.querySelectorAll('.top-nav-item, .sidebar-nav-item');
     this.init();
   }
 

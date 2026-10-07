@@ -85,9 +85,10 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* App Layout Structure: Sidebar + Main Content + Gemini Panel */
+/* App Layout Structure: Top Nav + Main Content + Gemini Panel */
 .app-layout {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   width: 100%;
   position: relative;

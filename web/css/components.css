@@ -3,36 +3,35 @@
    =================================================================== */
 
 /* ----------------------------------------------------
-   1. SIDEBAR NAVIGATION
+   1. TOP NAVIGATION BAR (NO LEFT SIDEBAR)
    ---------------------------------------------------- */
-.app-sidebar {
-  width: 240px;
-  min-width: 240px;
-  background: var(--bg-sidebar);
-  border-right: 1px solid var(--border-subtle);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 24px 16px;
-  height: 100vh;
+.top-nav-bar {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-subtle);
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
 }
 
-.sidebar-top {
+.top-nav-inner {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 0 36px;
+  height: 64px;
   display: flex;
-  flex-direction: column;
-  gap: 32px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
 }
 
-/* Sidebar Brand Logo */
-.sidebar-logo {
+.top-nav-logo {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  padding: 0 8px;
+  flex-shrink: 0;
 }
 
 .logo-icon-svg {
@@ -48,51 +47,116 @@
   letter-spacing: -0.02em;
 }
 
-/* Sidebar Nav Items */
-.sidebar-nav {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.sidebar-nav-item {
+.top-nav-menu {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
+}
+
+.top-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top-nav-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
   border-radius: var(--radius-md);
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 500;
   color: var(--text-secondary);
   cursor: pointer;
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
   transition: all var(--transition-fast);
   user-select: none;
+  white-space: nowrap;
 }
 
-.sidebar-nav-item svg {
-  width: 18px;
-  height: 18px;
+.top-nav-item svg {
+  width: 16px;
+  height: 16px;
   color: #64748b;
   transition: color var(--transition-fast);
 }
 
-.sidebar-nav-item:hover {
+.top-nav-item:hover {
   background: #f8fafc;
   color: var(--text-main);
 }
-.sidebar-nav-item:hover svg {
+.top-nav-item:hover svg {
   color: var(--text-main);
 }
 
-.sidebar-nav-item.active {
+.top-nav-item.active {
   background: #eef2ff;
   color: var(--primary-blue);
   font-weight: 600;
 }
-.sidebar-nav-item.active svg {
+.top-nav-item.active svg {
   color: var(--primary-blue);
 }
+
+.top-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.status-badge-pill {
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.status-dot-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 6px #16a34a;
+}
+
+.top-gemini-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: #eff6ff;
+  color: var(--primary-blue);
+  border: 1px solid #bfdbfe;
+  border-radius: var(--radius-full);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+}
+
+.top-gemini-btn:hover {
+  background: var(--primary-blue);
+  color: #ffffff;
+  border-color: var(--primary-blue);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+.top-gemini-btn svg {
+  width: 14px;
+  height: 14px;
 }
 
 /* ----------------------------------------------------
@@ -712,12 +776,18 @@
   .app-layout {
     flex-direction: column;
   }
-  .app-sidebar {
-    width: 100%;
+  .top-nav-inner {
+    padding: 0 16px;
     height: auto;
-    position: static;
-    border-right: none;
-    border-bottom: 1px solid var(--border-subtle);
+    min-height: 56px;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .top-nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .platforms-row {
     grid-template-columns: 1fr 1fr;
