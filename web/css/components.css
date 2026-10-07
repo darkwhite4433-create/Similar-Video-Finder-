@@ -93,53 +93,6 @@
 .sidebar-nav-item.active svg {
   color: var(--primary-blue);
 }
-
-/* Sidebar Bottom Profile */
-.sidebar-profile {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 12px;
-  border-radius: var(--radius-md);
-  background: #f8fafc;
-  border: 1px solid var(--border-subtle);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.sidebar-profile:hover {
-  background: #f1f5f9;
-}
-
-.profile-avatar-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.profile-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #e2e8f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #64748b;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.profile-name {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-main);
-  line-height: 1.2;
-}
-
-.profile-email {
-  font-size: 11.5px;
-  color: var(--text-muted);
 }
 
 /* ----------------------------------------------------
